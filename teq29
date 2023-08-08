@@ -1,0 +1,20 @@
+Dockerfile
+FROM ubuntu:23.10
+#installing the sources for the locales
+
+#to install without any interactive dialogue
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update 
+#installing nautilus file manager
+RUN apt-get install nautilus -y
+
+CMD ["nautilus"]
+
+sudo docker build -t nautilus .
+
+
+sudo docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix nautilus
+
+if error comes then  
+     xhost +local:docker
